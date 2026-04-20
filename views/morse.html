@@ -7,24 +7,31 @@
         <title>Cifrador Morse Pro</title>
     </head>
     <body
-        class="bg-slate-900 text-slate-100 min-h-screen flex items-center justify-center p-4">
+        class="bg-slate-900 text-slate-100 min-h-screen flex flex-col items-center justify-center p-4">
 
         <div
             class="bg-slate-800 p-8 rounded-2xl shadow-2xl w-full max-w-lg border border-slate-700">
             <h1
                 class="text-3xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">
-                Codigo Morse
+                Código Morse
             </h1>
             <p class="text-slate-400 text-sm mb-6">Cifrado clásico extendido
-                (Letras A-Z + Números 0-9 + Símbolos . , ? !)</p>
+                (A-Z, 0-9 y Símbolos)</p>
+
+            <div class="flex items-center gap-2 mb-4 text-xs text-slate-400">
+                <span
+                    class="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>Usa espacios entre letras y "/" para separar palabras al
+                    descifrar.</span>
+            </div>
 
             <div class="mb-6">
                 <label
                     class="block text-xs font-semibold uppercase text-slate-500 mb-2">Mensaje
                     o Código</label>
                 <textarea id="inputUser" rows="3"
-                    placeholder="Escribe tu mensaje aquí..."
-                    class="w-full p-4 rounded-xl bg-slate-900 border border-slate-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all resize-none"></textarea>
+                    placeholder="Escribe tu mensaje o puntos y rayas..."
+                    class="w-full p-4 rounded-xl bg-slate-900 border border-slate-700 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none transition-all resize-none"></textarea>
             </div>
 
             <div class="flex gap-3 mb-8">
@@ -44,7 +51,7 @@
                 <div id="resultadoContainer"
                     class="p-4 bg-slate-950 rounded-xl border border-slate-700 min-h-[60px] break-all pr-12">
                     <p id="resultado"
-                        class="font-mono text-lg text-blue-300">-</p>
+                        class="font-mono text-lg text-emerald-300">-</p>
                 </div>
 
                 <button onclick="copiarAlPortapapeles()"
@@ -60,10 +67,81 @@
             </div>
 
             <p id="feedback"
-                class="text-center text-xs mt-4 text-emerald-400 opacity-0 transition-opacity">¡Copiado
-                al portapapeles!</p>
-        </div>
-        <script type="module" src="../js/morse.js"></script>
+                class="text-center text-xs mt-4 text-emerald-400 opacity-0 transition-opacity">
+                ¡Copiado al portapapeles!
+            </p>
 
+            <div class="mt-4 pt-4 border-t border-slate-700">
+                <a href="../index.html"
+                    class="text-slate-500 hover:text-white text-sm flex items-center justify-center gap-2 transition-colors">
+                    ← Volver a la Biblioteca
+                </a>
+            </div>
+        </div>
+
+        <section
+            class="mt-12 w-full max-w-lg border-t border-slate-800 pt-10 mb-10">
+            <h2 class="text-2xl font-bold text-emerald-400 mb-6">El Lenguaje de
+                los Pulsos</h2>
+
+            <div class="space-y-6 text-slate-300 leading-relaxed text-sm">
+                <p>
+                    Desarrollado por **Samuel Morse** y **Alfred Vail** en 1830,
+                    este sistema revolucionó las telecomunicaciones al permitir
+                    enviar mensajes a través de cables eléctricos mediante
+                    pulsos cortos y largos.
+                </p>
+
+                <div
+                    class="bg-slate-800/50 p-5 rounded-2xl border border-slate-700">
+                    <h3
+                        class="text-white font-semibold mb-2 text-base italic">¿Sabías
+                        qué?</h3>
+                    <p class="text-slate-400">
+                        La señal <strong>SOS</strong> no significa
+                        "Save Our Souls" originalmente; fue elegida simplemente
+                        porque es una secuencia muy fácil de reconocer en morse:
+                        tres pulsos cortos, tres largos y tres cortos (... ---
+                        ...).
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Señales
+                        Frecuentes</h3>
+                    <div class="grid grid-cols-3 gap-3">
+                        <div
+                            class="bg-slate-900 p-3 rounded-xl border border-slate-700 text-center">
+                            <span
+                                class="block text-emerald-400 font-bold">S</span>
+                            <span
+                                class="text-xs font-mono text-slate-500">...</span>
+                        </div>
+                        <div
+                            class="bg-slate-900 p-3 rounded-xl border border-slate-700 text-center">
+                            <span
+                                class="block text-emerald-400 font-bold">O</span>
+                            <span
+                                class="text-xs font-mono text-slate-500">---</span>
+                        </div>
+                        <div
+                            class="bg-slate-900 p-3 rounded-xl border border-slate-700 text-center">
+                            <span
+                                class="block text-emerald-400 font-bold">SOS</span>
+                            <span
+                                class="text-xs font-mono text-slate-500">...---...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="text-xs text-slate-500 border-l-2 border-emerald-500 pl-4 py-1">
+                    En este sistema, el "punto" es la unidad de tiempo básica y
+                    la "raya" equivale a tres puntos.
+                </div>
+            </div>
+        </section>
+
+        <script type="module" src="../js/morse.js"></script>
     </body>
 </html>

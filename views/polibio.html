@@ -7,7 +7,7 @@
         <title>Cifrador Polibio 6x6 Pro</title>
     </head>
     <body
-        class="bg-slate-900 text-slate-100 min-h-screen flex items-center justify-center p-4">
+        class="bg-slate-900 text-slate-100 min-h-screen flex flex-col items-center justify-center p-4">
 
         <div
             class="bg-slate-800 p-8 rounded-2xl shadow-2xl w-full max-w-lg border border-slate-700">
@@ -18,12 +18,19 @@
             <p class="text-slate-400 text-sm mb-6">Cifrado clásico extendido
                 (Letras A-Z + Números 0-9)</p>
 
+            <div class="flex items-center gap-2 mb-4 text-xs text-slate-400">
+                <span
+                    class="flex h-2 w-2 rounded-full bg-blue-500 animate-pulse"></span>
+                <span>Cada letra se convierte en un par de coordenadas
+                    (Fila/Columna).</span>
+            </div>
+
             <div class="mb-6">
                 <label
                     class="block text-xs font-semibold uppercase text-slate-500 mb-2">Mensaje
                     o Código</label>
                 <textarea id="inputUser" rows="3"
-                    placeholder="Escribe tu mensaje aquí..."
+                    placeholder="Escribe tu mensaje o coordenadas (ej: 23 34)..."
                     class="w-full p-4 rounded-xl bg-slate-900 border border-slate-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all resize-none"></textarea>
             </div>
 
@@ -60,10 +67,83 @@
             </div>
 
             <p id="feedback"
-                class="text-center text-xs mt-4 text-emerald-400 opacity-0 transition-opacity">¡Copiado
-                al portapapeles!</p>
-        </div>
-        <script type="module" src="../js/polibio.js"></script>
+                class="text-center text-xs mt-4 text-emerald-400 opacity-0 transition-opacity">
+                ¡Copiado al portapapeles!
+            </p>
 
+            <div class="mt-4 pt-4 border-t border-slate-700 text-center">
+                <a href="../index.html"
+                    class="text-slate-500 hover:text-white text-sm inline-flex items-center gap-2 transition-colors">
+                    ← Volver a la Biblioteca
+                </a>
+            </div>
+        </div>
+
+        <section
+            class="mt-12 w-full max-w-lg border-t border-slate-800 pt-10 mb-10">
+            <h2 class="text-2xl font-bold text-blue-400 mb-6">La Cuadrícula de
+                Polibio</h2>
+
+            <div class="space-y-6 text-slate-300 leading-relaxed text-sm">
+                <p>
+                    Inventado por el historiador griego **Polibio**, este
+                    sistema no fue diseñado originalmente para ocultar secretos,
+                    sino para enviar mensajes a larga distancia usando señales
+                    visuales.
+                </p>
+
+                <div
+                    class="bg-slate-800/50 p-5 rounded-2xl border border-slate-700">
+                    <h3
+                        class="text-white font-semibold mb-2 text-base italic">El
+                        Telégrafo Óptico</h3>
+                    <p class="text-slate-400">
+                        Los soldados usaban antorchas en dos grupos de cinco
+                        (o seis en nuestra versión). El número de antorchas a la
+                        izquierda indicaba la fila, y a la derecha la columna.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-semibold mb-4 text-center">¿Cómo
+                        se lee?</h3>
+                    <div
+                        class="bg-slate-900 p-4 rounded-xl border border-slate-700 font-mono text-[10px] sm:text-xs text-center">
+                        <div class="grid grid-cols-7 gap-1">
+                            <div class="text-slate-500"></div> <div
+                                class="text-blue-400 font-bold">1</div> <div
+                                class="text-blue-400 font-bold">2</div> <div
+                                class="text-blue-400 font-bold">3</div> <div
+                                class="text-blue-400 font-bold">4</div> <div
+                                class="text-blue-400 font-bold">5</div> <div
+                                class="text-blue-400 font-bold">6</div>
+                            <div class="text-blue-400 font-bold">1</div>
+                            <div>A</div> <div>B</div> <div>C</div> <div>D</div>
+                            <div>E</div> <div>F</div>
+                            <div class="text-blue-400 font-bold">2</div>
+                            <div>G</div> <div>H</div> <div
+                                class="bg-blue-500/20 text-white rounded">I</div>
+                            <div>J</div> <div>K</div> <div>L</div>
+                            <div class="text-blue-400 font-bold">3</div>
+                            <div>M</div> <div>N</div> <div>O</div> <div>P</div>
+                            <div>Q</div> <div>R</div>
+                        </div>
+                        <p class="mt-4 text-slate-500">Ejemplo: La letra <span
+                                class="text-white">"I"</span> es Fila 2, Columna
+                            3 = <span
+                                class="text-blue-400 font-bold">23</span></p>
+                    </div>
+                </div>
+
+                <div
+                    class="text-xs text-slate-500 border-l-2 border-blue-500 pl-4 py-1">
+                    A diferencia del tablero clásico de 5x5, nuestra versión
+                    <strong>6x6</strong> permite incluir el alfabeto completo y
+                    los números del 0 al 9 sin ambigüedades.
+                </div>
+            </div>
+        </section>
+
+        <script type="module" src="../js/polibio.js"></script>
     </body>
 </html>
