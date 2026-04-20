@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>BitShift Library</title>
+    <style>
+        .bg-grid {
+            background-image: radial-gradient(circle, #1e293b 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-white min-h-screen flex flex-col items-center justify-center p-6 bg-grid">
+
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 overflow-hidden">
+        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-900/20 blur-[120px] rounded-full"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-emerald-900/20 blur-[120px] rounded-full"></div>
+    </div>
+
+    <header class="text-center mb-16">
+        <div class="inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-widest uppercase bg-slate-900 border border-slate-700 rounded-full text-blue-400">
+            v1.0 • Criptografía Clásica
+        </div>
+        <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400">
+            BitShift <span class="text-blue-500">Library</span>
+        </h1>
+        <p class="text-slate-400 mt-4 max-w-lg mx-auto">
+            Biblioteca interactiva de cifrado y descifrado. Herramientas modulares para entusiastas de la seguridad y el código.
+        </p>
+    </header>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl">
+        
+        <a href="views/polibio.html" class="relative group bg-slate-900/50 backdrop-blur-sm p-8 rounded-3xl border border-slate-800 hover:border-blue-500/50 transition-all duration-300 hover:-translate-y-2 overflow-hidden">
+            <div class="absolute -right-4 -top-4 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition-colors"></div>
+            <div class="relative">
+                <div class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center text-3xl mb-6 border border-blue-500/20 group-hover:scale-110 transition-transform">🔢</div>
+                <h2 class="text-2xl font-bold text-white mb-3">Polibio 6x6</h2>
+                <p class="text-slate-400 text-sm leading-relaxed">Matriz de coordenadas que permite cifrar letras y números de forma geométrica.</p>
+                <div class="mt-6 flex items-center text-blue-400 text-xs font-bold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">
+                    Abrir herramienta <span class="ml-2">→</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="views/morse.html" class="relative group bg-slate-900/50 backdrop-blur-sm p-8 rounded-3xl border border-slate-800 hover:border-emerald-500/50 transition-all duration-300 hover:-translate-y-2 overflow-hidden">
+            <div class="absolute -right-4 -top-4 w-24 h-24 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-colors"></div>
+            <div class="relative">
+                <div class="w-14 h-14 bg-emerald-500/10 rounded-2xl flex items-center justify-center text-3xl mb-6 border border-emerald-500/20 group-hover:scale-110 transition-transform">📡</div>
+                <h2 class="text-2xl font-bold text-white mb-3">Morse Code</h2>
+                <p class="text-slate-400 text-sm leading-relaxed">Conversión estándar de telegrafía. Soporta puntuación y espacios entre palabras.</p>
+                <div class="mt-6 flex items-center text-emerald-400 text-xs font-bold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">
+                    Abrir herramienta <span class="ml-2">→</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="views/binario.html" class="relative group bg-slate-900/50 backdrop-blur-sm p-8 rounded-3xl border border-slate-800 hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-2 overflow-hidden">
+            <div class="absolute -right-4 -top-4 w-24 h-24 bg-purple-500/10 rounded-full blur-2xl group-hover:bg-purple-500/20 transition-colors"></div>
+            <div class="relative">
+                <div class="w-14 h-14 bg-purple-500/10 rounded-2xl flex items-center justify-center text-3xl mb-6 border border-purple-500/20 group-hover:scale-110 transition-transform">💻</div>
+                <h2 class="text-2xl font-bold text-white mb-3">Binary ASCII</h2>
+                <p class="text-slate-400 text-sm leading-relaxed">Traducción a lenguaje de máquina de 8 bits por carácter. Preciso y eficiente.</p>
+                <div class="mt-6 flex items-center text-purple-400 text-xs font-bold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">
+                    Abrir herramienta <span class="ml-2">→</span>
+                </div>
+            </div>
+        </a>
+
+    </div>
+
+    <footer class="mt-20 text-slate-500 text-sm">
+        Desarrollado con ❤️ por MM
+    </footer>
+</body>
+</html>
