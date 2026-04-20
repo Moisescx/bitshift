@@ -51,6 +51,7 @@ bitshift/
 │   ├── morse.html
 │   └── binario.html
 └── README.md
+```
 
 ## 📈 Próximas Actualizaciones
 
@@ -59,4 +60,3 @@ bitshift/
 [ ] Modo de visualización de matriz en tiempo real para Polibio.
 
 [ ] Efectos de sonido tipo "beeps" para el Código Morse.
-
