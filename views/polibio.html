@@ -7,142 +7,151 @@
         <title>Cifrador Polibio 6x6 Pro</title>
     </head>
     <body
-        class="bg-slate-900 text-slate-100 min-h-screen flex flex-col items-center justify-center p-4">
+        class="bg-slate-900 text-slate-100 min-h-screen flex items-center justify-center p-4">
 
         <div
-            class="bg-slate-800 p-8 rounded-2xl shadow-2xl w-full max-w-lg border border-slate-700">
-            <h1
-                class="text-3xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">
-                Polibio 6x6
-            </h1>
-            <p class="text-slate-400 text-sm mb-6">Cifrado clásico extendido
-                (Letras A-Z + Números 0-9)</p>
+            class="grid grid-cols-1 lg:grid-cols-3 gap-8 w-full max-w-6xl items-start">
 
-            <div class="flex items-center gap-2 mb-4 text-xs text-slate-400">
-                <span
-                    class="flex h-2 w-2 rounded-full bg-blue-500 animate-pulse"></span>
-                <span>Cada letra se convierte en un par de coordenadas
-                    (Fila/Columna).</span>
-            </div>
-
-            <div class="mb-6">
-                <label
-                    class="block text-xs font-semibold uppercase text-slate-500 mb-2">Mensaje
-                    o Código</label>
-                <textarea id="inputUser" rows="3"
-                    placeholder="Escribe tu mensaje o coordenadas (ej: 23 34)..."
-                    class="w-full p-4 rounded-xl bg-slate-900 border border-slate-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all resize-none"></textarea>
-            </div>
-
-            <div class="flex gap-3 mb-8">
-                <button onclick="procesar(true)"
-                    class="flex-1 bg-blue-600 hover:bg-blue-500 py-3 rounded-xl font-bold transition-colors shadow-lg shadow-blue-900/20">
-                    Cifrar
-                </button>
-                <button onclick="procesar(false)"
-                    class="flex-1 bg-emerald-600 hover:bg-emerald-500 py-3 rounded-xl font-bold transition-colors shadow-lg shadow-emerald-900/20">
-                    Descifrar
-                </button>
-            </div>
-
-            <div class="relative group">
-                <label
-                    class="block text-xs font-semibold uppercase text-slate-500 mb-2">Resultado</label>
-                <div id="resultadoContainer"
-                    class="p-4 bg-slate-950 rounded-xl border border-slate-700 min-h-[60px] break-all pr-12">
-                    <p id="resultado"
-                        class="font-mono text-lg text-blue-300">-</p>
-                </div>
-
-                <button onclick="copiarAlPortapapeles()"
-                    class="absolute right-3 bottom-3 p-2 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors border border-slate-600"
-                    title="Copiar">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
-                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                    </svg>
-                </button>
-            </div>
-
-            <p id="feedback"
-                class="text-center text-xs mt-4 text-emerald-400 opacity-0 transition-opacity">
-                ¡Copiado al portapapeles!
-            </p>
-
-            <div class="mt-4 pt-4 border-t border-slate-700 text-center">
-                <a href="../index.html"
-                    class="text-slate-500 hover:text-white text-sm inline-flex items-center gap-2 transition-colors">
-                    ← Volver a la Biblioteca
-                </a>
-            </div>
-        </div>
-
-        <section
-            class="mt-12 w-full max-w-lg border-t border-slate-800 pt-10 mb-10">
-            <h2 class="text-2xl font-bold text-blue-400 mb-6">La Cuadrícula de
-                Polibio</h2>
-
-            <div class="space-y-6 text-slate-300 leading-relaxed text-sm">
-                <p>
-                    Inventado por el historiador griego **Polibio**, este
-                    sistema no fue diseñado originalmente para ocultar secretos,
-                    sino para enviar mensajes a larga distancia usando señales
-                    visuales.
-                </p>
+            <div class="lg:col-span-2 space-y-8">
 
                 <div
-                    class="bg-slate-800/50 p-5 rounded-2xl border border-slate-700">
-                    <h3
-                        class="text-white font-semibold mb-2 text-base italic">El
-                        Telégrafo Óptico</h3>
-                    <p class="text-slate-400">
-                        Los soldados usaban antorchas en dos grupos de cinco
-                        (o seis en nuestra versión). El número de antorchas a la
-                        izquierda indicaba la fila, y a la derecha la columna.
-                    </p>
-                </div>
+                    class="bg-slate-800 p-8 rounded-2xl shadow-2xl border border-slate-700">
+                    <h1
+                        class="text-3xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">
+                        Polibio 6x6
+                    </h1>
+                    <p class="text-slate-400 text-sm mb-6">Cifrado clásico
+                        extendido (Letras A-Z + Números 0-9)</p>
 
-                <div>
-                    <h3 class="text-white font-semibold mb-4 text-center">¿Cómo
-                        se lee?</h3>
                     <div
-                        class="bg-slate-900 p-4 rounded-xl border border-slate-700 font-mono text-[10px] sm:text-xs text-center">
-                        <div class="grid grid-cols-7 gap-1">
-                            <div class="text-slate-500"></div> <div
-                                class="text-blue-400 font-bold">1</div> <div
-                                class="text-blue-400 font-bold">2</div> <div
-                                class="text-blue-400 font-bold">3</div> <div
-                                class="text-blue-400 font-bold">4</div> <div
-                                class="text-blue-400 font-bold">5</div> <div
-                                class="text-blue-400 font-bold">6</div>
-                            <div class="text-blue-400 font-bold">1</div>
-                            <div>A</div> <div>B</div> <div>C</div> <div>D</div>
-                            <div>E</div> <div>F</div>
-                            <div class="text-blue-400 font-bold">2</div>
-                            <div>G</div> <div>H</div> <div
-                                class="bg-blue-500/20 text-white rounded">I</div>
-                            <div>J</div> <div>K</div> <div>L</div>
-                            <div class="text-blue-400 font-bold">3</div>
-                            <div>M</div> <div>N</div> <div>O</div> <div>P</div>
-                            <div>Q</div> <div>R</div>
+                        class="flex items-center gap-2 mb-4 text-xs text-slate-400">
+                        <span
+                            class="flex h-2 w-2 rounded-full bg-blue-500 animate-pulse"></span>
+                        <span>Cada letra se convierte en un par de coordenadas
+                            (Fila/Columna).</span>
+                    </div>
+
+                    <div class="mb-6">
+                        <label
+                            class="block text-xs font-semibold uppercase text-slate-500 mb-2">Mensaje
+                            o Código</label>
+                        <textarea id="inputUser" rows="3"
+                            placeholder="Escribe tu mensaje o coordenadas (ej: 23 34)..."
+                            class="w-full p-4 rounded-xl bg-slate-900 border border-slate-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all resize-none"></textarea>
+                    </div>
+
+                    <div class="flex gap-3 mb-8">
+                        <button onclick="procesar(true)"
+                            class="flex-1 bg-blue-600 hover:bg-blue-500 py-3 rounded-xl font-bold transition-colors shadow-lg shadow-blue-900/20">Cifrar</button>
+                        <button onclick="procesar(false)"
+                            class="flex-1 bg-emerald-600 hover:bg-emerald-500 py-3 rounded-xl font-bold transition-colors shadow-lg shadow-emerald-900/20">Descifrar</button>
+                    </div>
+
+                    <div class="relative group">
+                        <label
+                            class="block text-xs font-semibold uppercase text-slate-500 mb-2">Resultado</label>
+                        <div id="resultadoContainer"
+                            class="p-4 bg-slate-950 rounded-xl border border-slate-700 min-h-[60px] break-all pr-12 text-blue-300 font-mono text-lg">
+                            <p id="resultado">-</p>
                         </div>
-                        <p class="mt-4 text-slate-500">Ejemplo: La letra <span
-                                class="text-white">"I"</span> es Fila 2, Columna
-                            3 = <span
-                                class="text-blue-400 font-bold">23</span></p>
+                        <button onclick="copiarAlPortapapeles()"
+                            class="absolute right-3 bottom-3 p-2 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors border border-slate-600">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round"
+                                    stroke-linejoin="round" stroke-width="2"
+                                    d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <p id="feedback"
+                        class="text-center text-xs mt-4 text-emerald-400 opacity-0 transition-opacity">¡Copiado!</p>
+
+                    <div
+                        class="mt-4 pt-4 border-t border-slate-700 text-center">
+                        <a href="../index.html"
+                            class="text-slate-500 hover:text-white text-sm inline-flex items-center gap-2 transition-colors">←
+                            Volver a la Biblioteca</a>
                     </div>
                 </div>
 
-                <div
-                    class="text-xs text-slate-500 border-l-2 border-blue-500 pl-4 py-1">
-                    A diferencia del tablero clásico de 5x5, nuestra versión
-                    <strong>6x6</strong> permite incluir el alfabeto completo y
-                    los números del 0 al 9 sin ambigüedades.
-                </div>
+                <section
+                    class="bg-slate-800/30 p-8 rounded-2xl border border-slate-800/50">
+                    <h2
+                        class="text-2xl font-bold text-blue-400 mb-6 text-center">La
+                        Cuadrícula de Polibio</h2>
+                    <div
+                        class="space-y-6 text-slate-300 text-sm leading-relaxed">
+                        <p>Inventado por el historiador griego Polibio, este
+                            sistema usaba señales visuales para enviar mensajes
+                            a larga distancia mediante coordenadas
+                            numéricas.</p>
+
+                        <div
+                            class="bg-slate-900 p-4 rounded-xl border border-slate-700 font-mono text-[10px] sm:text-xs text-center">
+                            <div
+                                class="grid grid-cols-7 gap-1 max-w-[280px] mx-auto">
+                                <div class="text-slate-500"></div> <div
+                                    class="text-blue-400 font-bold">1</div> <div
+                                    class="text-blue-400 font-bold">2</div> <div
+                                    class="text-blue-400 font-bold">3</div> <div
+                                    class="text-blue-400 font-bold">4</div> <div
+                                    class="text-blue-400 font-bold">5</div> <div
+                                    class="text-blue-400 font-bold">6</div>
+                                <div class="text-blue-400 font-bold">1</div>
+                                <div>A</div> <div>B</div> <div>C</div>
+                                <div>D</div> <div>E</div> <div>F</div>
+                                <div class="text-blue-400 font-bold">2</div>
+                                <div>G</div> <div>H</div> <div
+                                    class="bg-blue-500/20 text-white rounded">I</div>
+                                <div>J</div> <div>K</div> <div>L</div>
+                                <div class="text-blue-400 font-bold">3</div>
+                                <div>M</div> <div>N</div> <div>O</div>
+                                <div>P</div> <div>Q</div> <div>R</div>
+                            </div>
+                            <p class="mt-4 text-slate-500 text-[10px]">Ejemplo:
+                                La <span class="text-white">"I"</span> es Fila
+                                2, Columna 3 = <span
+                                    class="text-blue-400 font-bold">23</span></p>
+                        </div>
+                    </div>
+                    <br>
+                    <div
+                        class="bg-slate-800/50 p-5 rounded-2xl border border-slate-700 text-sm">
+                        <h3 class="text-white font-semibold mb-2">Telégrafo
+                            Óptico</h3>
+                        <p class="text-slate-400 italic leading-relaxed">
+                            Los soldados usaban grupos de antorchas. El número
+                            de
+                            antorchas a la izquierda era la fila, y a la derecha
+                            la
+                            columna.
+                        </p>
+                    </div>
+                </section>
             </div>
-        </section>
+
+            <aside class="sticky top-4 space-y-4">
+                <div
+                    class="bg-slate-800 p-6 rounded-2xl border border-slate-700 shadow-xl">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3
+                            class="text-xs font-bold uppercase text-slate-500 tracking-widest">Actividad
+                            Reciente</h3>
+                        <button
+                            onclick="localStorage.removeItem('bitshift'); location.reload();"
+                            class="text-[10px] text-red-400 hover:text-red-300 transition-colors uppercase font-bold">Limpiar</button>
+                    </div>
+
+                    <div id="historialLista" class="space-y-3">
+                    </div>
+                </div>
+
+            </aside>
+
+        </div>
 
         <script type="module" src="../js/polibio.js"></script>
     </body>

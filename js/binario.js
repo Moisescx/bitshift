@@ -40,3 +40,17 @@ window.copiarAlPortapapeles = async () => {
     console.error("Error al copiar: ", err);
   }
 };
+
+import { Historial } from "./utils.js";
+
+window.procesar = (modo) => {
+  const input = document.getElementById("inputUser").value;
+  if (!input) return;
+
+  const res = modo ? BinaryCoder.cifrar(input) : BinaryCoder.descifrar(input);
+  document.getElementById("resultado").innerText = res;
+
+  Historial.guardar("Binario", input, res);
+};
+
+document.addEventListener("DOMContentLoaded", () => Historial.renderizar());

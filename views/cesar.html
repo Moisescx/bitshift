@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://cdn.tailwindcss.com"></script>
-        <title>Cifrador Morse Pro</title>
+        <title>Cifrador César Pro</title>
     </head>
     <body
         class="bg-slate-900 text-slate-100 min-h-screen flex items-center justify-center p-4">
@@ -17,18 +17,18 @@
                 <div
                     class="bg-slate-800 p-8 rounded-2xl shadow-2xl border border-slate-700">
                     <h1
-                        class="text-3xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">
-                        Código Morse
+                        class="text-3xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-500">
+                        Código César
                     </h1>
-                    <p class="text-slate-400 text-sm mb-6">Cifrado clásico
-                        extendido (A-Z, 0-9 y Símbolos)</p>
+                    <p class="text-slate-400 text-sm mb-6">Cifrado clásico por
+                        desplazamiento (Incluye Ñ)</p>
 
                     <div
                         class="flex items-center gap-2 mb-4 text-xs text-slate-400">
                         <span
-                            class="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                        <span>Usa espacios entre letras y "/" para separar
-                            palabras.</span>
+                            class="flex h-2 w-2 rounded-full bg-orange-500 animate-pulse"></span>
+                        <span>Ajusta la llave (Key) para cambiar el nivel de
+                            rotación.</span>
                     </div>
 
                     <div class="mb-6">
@@ -36,29 +36,38 @@
                             class="block text-xs font-semibold uppercase text-slate-500 mb-2">Mensaje
                             o Código</label>
                         <textarea id="inputUser" rows="3"
-                            placeholder="Escribe tu mensaje o puntos y rayas..."
-                            class="w-full p-4 rounded-xl bg-slate-900 border border-slate-700 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none transition-all resize-none"></textarea>
+                            placeholder="Escribe tu mensaje aquí..."
+                            class="w-full p-4 rounded-xl bg-slate-900 border border-slate-700 focus:border-orange-500 focus:ring-1 focus:ring-orange-500 outline-none transition-all resize-none"></textarea>
+                    </div>
+
+                    <div class="mb-6">
+                        <label
+                            class="block text-xs font-semibold uppercase text-slate-500 mb-2">Desplazamiento
+                            (Llave)</label>
+                        <input type="number" id="shiftValue" value="3" min="1"
+                            max="26"
+                            class="w-full p-3 rounded-xl bg-slate-900 border border-slate-700 text-orange-400 font-bold outline-none focus:border-orange-500 transition-all">
                     </div>
 
                     <div class="flex gap-3 mb-8">
                         <button onclick="procesar(true)"
-                            class="flex-1 bg-blue-600 hover:bg-blue-500 py-3 rounded-xl font-bold transition-colors shadow-lg shadow-blue-900/20">Cifrar</button>
+                            class="flex-1 bg-orange-600 hover:bg-orange-500 py-3 rounded-xl font-bold transition-colors shadow-lg shadow-orange-900/20 text-white">Cifrar</button>
                         <button onclick="procesar(false)"
-                            class="flex-1 bg-emerald-600 hover:bg-emerald-500 py-3 rounded-xl font-bold transition-colors shadow-lg shadow-emerald-900/20">Descifrar</button>
+                            class="flex-1 bg-slate-700 hover:bg-slate-600 py-3 rounded-xl font-bold transition-colors shadow-lg shadow-black/20 text-white">Descifrar</button>
                     </div>
 
                     <div class="relative group">
                         <label
                             class="block text-xs font-semibold uppercase text-slate-500 mb-2">Resultado</label>
                         <div id="resultadoContainer"
-                            class="p-4 bg-slate-950 rounded-xl border border-slate-700 min-h-[60px] break-all pr-12 text-emerald-300 font-mono text-lg">
+                            class="p-4 bg-slate-950 rounded-xl border border-slate-700 min-h-[60px] break-all pr-12 text-orange-300 font-mono text-lg">
                             <p id="resultado">-</p>
                         </div>
                         <button onclick="copiarAlPortapapeles()"
                             class="absolute right-3 bottom-3 p-2 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors border border-slate-600">
                             <svg xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
+                                class="h-5 w-5 text-slate-400" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round"
                                     stroke-linejoin="round" stroke-width="2"
                                     d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
@@ -67,7 +76,7 @@
                     </div>
 
                     <p id="feedback"
-                        class="text-center text-xs mt-4 text-emerald-400 opacity-0 transition-opacity">¡Copiado!</p>
+                        class="text-center text-xs mt-4 text-orange-400 opacity-0 transition-opacity">¡Copiado!</p>
 
                     <div class="mt-4 pt-4 border-t border-slate-700">
                         <a href="../index.html"
@@ -78,48 +87,37 @@
 
                 <section
                     class="bg-slate-800/30 p-8 rounded-2xl border border-slate-800/50">
-                    <h2 class="text-2xl font-bold text-emerald-400 mb-6">El
-                        Lenguaje de los Pulsos</h2>
-                    <div
-                        class="space-y-6 text-slate-400 text-sm leading-relaxed">
-                        <p>Desarrollado en 1830, este sistema permitió enviar
-                            mensajes mediante pulsos eléctricos cortos y largos,
-                            revolucionando la velocidad de la información.</p>
-
-                        <div class="grid grid-cols-3 gap-3">
-                            <div
-                                class="bg-slate-900/50 p-3 rounded-xl border border-slate-700 text-center">
-                                <span
-                                    class="block text-emerald-400 font-bold italic">S</span>
-                                <span
-                                    class="text-[10px] font-mono italic">...</span>
+                    <h2
+                        class="text-2xl font-bold text-orange-400 mb-6 text-center">Mecánica
+                        del Cifrado</h2>
+                    <div class="space-y-6">
+                        <div
+                            class="bg-slate-900 p-4 rounded-xl border border-slate-700 text-center font-mono">
+                            <div class="flex justify-between items-center px-4">
+                                <div
+                                    class="text-slate-500 italic">Original:</div>
+                                <div
+                                    class="text-white font-bold tracking-widest text-lg">A
+                                    B C D</div>
                             </div>
-                            <div
-                                class="bg-slate-900/50 p-3 rounded-xl border border-slate-700 text-center">
-                                <span
-                                    class="block text-emerald-400 font-bold italic">O</span>
-                                <span
-                                    class="text-[10px] font-mono italic">---</span>
-                            </div>
-                            <div
-                                class="bg-slate-900/50 p-3 rounded-xl border border-slate-700 text-center">
-                                <span
-                                    class="block text-emerald-400 font-bold italic">SOS</span>
-                                <span
-                                    class="text-[10px] font-mono italic">...---...</span>
+                            <div class="text-orange-500 my-1">↓ +3 ↓</div>
+                            <div class="flex justify-between items-center px-4">
+                                <div
+                                    class="text-slate-500 italic">Cifrado:</div>
+                                <div
+                                    class="text-orange-400 font-bold tracking-widest text-lg">D
+                                    E F G</div>
                             </div>
                         </div>
                     </div>
                     <br>
                     <div
                         class="bg-slate-800/50 p-5 rounded-2xl border border-slate-700 text-sm">
-                        <h3 class="text-white font-semibold mb-2 italic">¿Sabías
-                            qué?</h3>
-                        <p class="text-slate-400 leading-relaxed italic">
-                            La señal SOS fue elegida simplemente porque es una
-                            secuencia fácil de reconocer en morse, no por las
-                            siglas
-                            en inglés.
+                        <h3 class="text-white font-semibold mb-2">Un poco de
+                            historia</h3>
+                        <p class="text-slate-400 italic leading-relaxed">
+                            "Si tenía algo confidencial que decir, lo escribía en clave cambiando el orden de las letras..."
+                            — Suetonio.
                         </p>
                     </div>
                 </section>
@@ -137,13 +135,14 @@
                             class="text-[10px] text-red-400 hover:text-red-300 transition-colors uppercase font-bold">Limpiar</button>
                     </div>
 
-                    <div id="historialLista" class="space-y-3 text-sm">
+                    <div id="historialLista" class="space-y-3">
                     </div>
                 </div>
+
             </aside>
 
         </div>
 
-        <script type="module" src="../js/morse.js"></script>
+        <script type="module" src="../js/cesar.js"></script>
     </body>
 </html>

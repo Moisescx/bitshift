@@ -1,3 +1,5 @@
+import { Historial } from "./utils.js";
+
 export const Polibio6x6 = {
   chars: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
 
@@ -36,7 +38,7 @@ export const Polibio6x6 = {
       .split(" ")
       .map((par) => {
         if (par === "") return " ";
-        return inverse[par] || "?";
+        return inverse[par] || "";
       })
       .join("");
   },
@@ -44,13 +46,17 @@ export const Polibio6x6 = {
 
 window.procesar = (modo) => {
   const input = document.getElementById("inputUser").value;
+  if (!input) return;
+
   const res = modo ? Polibio6x6.cifrar(input) : Polibio6x6.descifrar(input);
   document.getElementById("resultado").innerText = res;
-}
+
+  Historial.guardar("Polibio", input, res);
+};
 
 window.copiarAlPortapapeles = async () => {
   const texto = document.getElementById("resultado").innerText;
-  if (texto === "-") return;
+  if (texto === "-" || !texto) return;
 
   try {
     await navigator.clipboard.writeText(texto);
@@ -60,4 +66,8 @@ window.copiarAlPortapapeles = async () => {
   } catch (err) {
     console.error("Error al copiar: ", err);
   }
-}
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  Historial.renderizar();
+});
